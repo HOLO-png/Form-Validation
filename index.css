@@ -1,0 +1,64 @@
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; }
+  .container .form-Signin {
+    width: 443px;
+    padding: 27px 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 61px -30px; }
+    .container .form-Signin .form-group {
+      position: relative; }
+    .container .form-Signin input.input-control {
+      width: 100%;
+      height: 40px;
+      outline: none;
+      border: 1px solid #b0b0b0;
+      position: relative; }
+      .container .form-Signin input.input-control::-webkit-input-placeholder {
+        font-style: italic;
+        transform: translateX(10px); }
+      .container .form-Signin input.input-control:focus {
+        border: 1px solid #00c73f;
+        color: #016f24;
+        outline: rgba(29, 214, 0, 0.673) solid 2px; }
+    .container .form-Signin i.fas.fa-check {
+      position: absolute;
+      right: 6%;
+      transform: translateY(-27px);
+      color: rgba(29, 214, 0, 0.673);
+      display: none; }
+    .container .form-Signin i.fas.fa-exclamation {
+      position: absolute;
+      right: 6%;
+      transform: translateY(-27px);
+      color: rgba(197, 3, 3, 0.673);
+      display: none; }
+    .container .form-Signin input.errorInput {
+      border: 1px solid #ba0202; }
+      .container .form-Signin input.errorInput:focus {
+        border: 1px solid #c70000;
+        color: #820202;
+        outline: rgba(197, 3, 3, 0.673) solid 2px; }
+    .container .form-Signin .title-error {
+      color: red !important;
+      margin-bottom: 10px; }
+    .container .form-Signin .text-muted {
+      margin-bottom: 10px; }
+    .container .form-Signin span {
+      display: block;
+      font-size: 35px;
+      text-align: center;
+      padding: 10px;
+      transform: translateY(-18px);
+      font-weight: 100; }
+    .container .form-Signin #inputCheckBox {
+      width: 21px;
+      margin: 21px 0; }
+    .container .form-Signin .title-checkbox {
+      position: absolute;
+      left: 32px;
+      bottom: 46px; }
+
+/*# sourceMappingURL=index.css.map */
