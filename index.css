@@ -29,6 +29,19 @@
       transform: translateY(-27px);
       color: rgba(29, 214, 0, 0.673);
       display: none; }
+    .container .form-Signin i.far.fa-eye-slash {
+      cursor: pointer;
+      position: absolute;
+      right: 6%;
+      transform: translateY(-27px);
+      color: rgba(37, 37, 37, 0.673);
+      display: none; }
+    .container .form-Signin i.far.fa-eye {
+      position: absolute;
+      right: 6%;
+      transform: translateY(-27px);
+      color: rgba(37, 37, 37, 0.673);
+      display: none; }
     .container .form-Signin i.fas.fa-exclamation {
       position: absolute;
       right: 6%;

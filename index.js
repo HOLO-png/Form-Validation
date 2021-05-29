@@ -9,6 +9,8 @@ document.addEventListener(
       const titleError = $$('#emailHelpId');
       const btn = $('#submit');
       const icon = $$('i');
+      const iconShowPass = $('.fa-eye-slash');
+      const iconShowPass2 = $('.fa-eye');
 
       const errorKey = {
         color: 'red !important',
@@ -44,7 +46,7 @@ document.addEventListener(
           checkLengthValueInput(emailVal, 1);
         };
         inputEle[2].oninput = function (e) {
-          numberVal = Number(e.target.value);
+          numberVal = e.target.value;
           checkLengthValueInput(numberVal, 2);
         };
         inputEle[3].oninput = function (e) {
@@ -86,11 +88,16 @@ document.addEventListener(
             }
           }
           if (i == 2) {
+            let ReString = /^[a-zA-Z]*$/g;
             let ReNumPhone = /((09|03|07|08|05)+([0-9]{8})\b)/g;
-            if (ReNumPhone.test(value)) {
-              checkIfTrue('&nbsp;', i);
+            if (ReString.test(value)) {
+              checkIfFalse('Bạn phải nhập kí tự số!', i);
             } else {
-              checkIfFalse('Số điện thoại mà bạn được cấp', i);
+              if (ReNumPhone.test(value)) {
+                checkIfTrue('&nbsp;', i);
+              } else {
+                checkIfFalse('Số điện thoại mà bạn được cấp', i);
+              }
             }
           }
           if (i == 3) {
@@ -135,9 +142,10 @@ document.addEventListener(
         icon[i].classList.add('fa-check');
 
         checkValidForm(isCheckValid);
+        showHidePassword();
       }
       function checkEmptyInput(val, i) {
-        if (val == undefined || val.length == 0) {
+        if (val == undefined || val.length == 0 || val == '') {
           checkIfFalse('Bạn phải nhập giá trị vào ô này!', i);
           checkValidForm(isCheckValid);
         }
@@ -171,6 +179,7 @@ document.addEventListener(
         }
 
         btn.onclick = function (e) {
+          e.preventDefault();
           let valueInput = new valueInputValid(
             nameVal,
             emailVal,
@@ -178,16 +187,16 @@ document.addEventListener(
             passwordVal
           );
           console.log(valueInput);
-
           checkEmptyInput(nameVal, 0);
           checkEmptyInput(emailVal, 1);
           checkEmptyInput(numberVal, 2);
           checkEmptyInput(passwordVal, 3);
           checkEmptyInput(passwordVal4, 4);
           checkEmptyInput(ischeckboxVal);
-
-          e.preventDefault();
           deleteValueInput();
+          for (let i = 0; i < icon.length; i++) {
+            icon[i].style.display = 'none';
+          }
         };
       }
       function deleteValueInput() {
@@ -199,6 +208,48 @@ document.addEventListener(
         }
         isCheckValid = false;
       }
+      // sự kiện hover ẩn hiện show password//
+
+      function showHidePassword() {
+        inputEle[3].onblur = function () {
+          iconShowPassStart();
+        };
+      }
+      function iconShowPassStart() {
+        icon[3].style.display = 'none';
+        iconShowPass.style.display = 'block';
+        hideShow();
+      }
+      function hideShow() {
+        function show() {
+          inputEle[3].setAttribute('type', 'text');
+        }
+        function hide() {
+          inputEle[3].setAttribute('type', 'password');
+        }
+        function showHide() {
+          var pwShown = 0;
+          iconShowPass.onmousedown = function () {
+            if (pwShown == 0) {
+              pwShown = 1;
+              show();
+            } else {
+              hide();
+            }
+          };
+          iconShowPass.onmouseup = function () {
+            if (pwShown != 0) {
+              pwShown = 0;
+              hide();
+            } else {
+              show();
+            }
+          };
+        }
+        showHide();
+      }
+
+      hideShow();
       addValueInput();
       checkValidForm();
       checkTheSimilarity(passwordVal);
